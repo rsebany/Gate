@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import type { CSSProperties } from 'react'
 import { CareerRetrospective } from './components/CareerRetrospective'
 import { CaseStudy } from './components/CaseStudy'
 import { CommunityChronicle } from './components/CommunityChronicle'
@@ -17,7 +16,6 @@ import { portfolio } from './data/portfolio'
 
 function App() {
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
-  const [avatarHovered, setAvatarHovered] = useState(false)
 
   const activeProject = portfolio.projects.find(
     (p) => p.id === activeProjectId,
@@ -32,25 +30,15 @@ function App() {
     )
   }
 
-  const activeStyle = {
-    backgroundColor: avatarHovered ? '#2F3E63' : undefined,
-    '--color-ink': avatarHovered ? '#F2EFE7' : undefined,
-    '--color-paper': avatarHovered ? 'rgba(47, 62, 99, 0.5)' : undefined,
-    transition: 'background-color 0.8s ease',
-  } as CSSProperties
-
   return (
-    <div
-      className="group relative min-h-svh bg-paper"
-      style={activeStyle}
-    >
+    <div className="group relative min-h-svh bg-paper">
       <PaperGrain />
       <ScannerSweep />
       <div className="group relative z-10 mx-auto max-w-6xl px-4 pb-12 pt-0 md:px-6">
         <Masthead />
         <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:gap-12">
           <div className="min-w-0">
-            <SpecialReport onHoverChange={setAvatarHovered} />
+            <SpecialReport />
             <CareerRetrospective />
             <WorksInPreparation />
             <FeaturedProjects onOpenCaseStudy={setActiveProjectId} />

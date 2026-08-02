@@ -14,11 +14,7 @@ const figureVariants = {
   },
 }
 
-export function SpecialReport({
-  onHoverChange,
-}: {
-  onHoverChange?: (hovering: boolean) => void
-}) {
+export function SpecialReport() {
   const reduced = usePrefersReducedMotion()
   const { specialReport } = portfolio
   const [imgOk, setImgOk] = useState(true)
@@ -39,11 +35,7 @@ export function SpecialReport({
           whileInView="show"
           viewport={{ once: true }}
         >
-          <div
-            className="flex min-h-[200px] items-center justify-center overflow-hidden border-2 border-ink bg-ink/5"
-            onMouseEnter={() => onHoverChange?.(true)}
-            onMouseLeave={() => onHoverChange?.(false)}
-          >
+          <div className="flex min-h-[200px] items-center justify-center overflow-hidden border-2 border-ink bg-ink/5">
             {imgOk ? (
               <img
                 src={avatarImg}
