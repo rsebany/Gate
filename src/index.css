@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0a0a0a;
+  --color-paper: #f6f1e5;
+
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    @apply bg-paper text-ink antialiased;
+  }
+
+  body {
+    @apply m-0 min-h-svh font-body text-base leading-relaxed;
+  }
+
+  #root {
+    @apply min-h-svh;
+  }
+
+  code {
+    @apply rounded border border-ink/20 bg-ink/[0.04] px-1 py-0.5 font-mono text-[0.9em];
+  }
+}
+
+/* Newspaper drop cap */
+.drop-cap::first-letter {
+  float: left;
+  margin-right: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 3.25rem;
+  line-height: 0.85;
+  font-weight: 700;
+}
+
+/* CT scanner sweep (decorative) */
+@keyframes scanner-sweep {
+  0% {
+    top: -25%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+.animate-scanner-sweep {
+  animation: scanner-sweep 14s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scanner-sweep {
+    animation: none;
+  }
+}
+
+/* Film grain drift (decorative) */
+@keyframes grain-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-2%, 2%);
+  }
+}
+
+.motion-safe\:animate-grain {
+  animation: grain-drift 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe\:animate-grain {
+    animation: none;
+  }
+}
+
+/* Very subtle contrast pulse on figure (optional) */
+@keyframes subtle-flicker {
+  0%,
+  100% {
+    filter: contrast(1.15);
+  }
+  50% {
+    filter: contrast(1.22);
+  }
+}
+
+.motion-safe\:animate-subtle-flicker {
+  animation: subtle-flicker 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe\:animate-subtle-flicker {
+    animation: none;
+  }
+}
