@@ -114,21 +114,21 @@ export const portfolioFr = {
     },
     {
       id: 'greymatter',
-      title: 'GreyMatter | Segmentation Open-Source de l\'Hippocampe',
-      status: 'Terminé',
+      title: 'GreyMatter | Mécanismes d\'Attention pour la Segmentation de l\'Hippocampe',
+      status: 'Publié (MELBA)',
       category: 'IA / Imagerie Médicale',
       description:
-        '1er prix, Hackathon I-ACE 2026. Plateforme open-source pour la segmentation reproductible des sous-régions hippocampiques sur IRM (260 cas). Met en lumière l\'écart entre la validation croisée et l\'évaluation out-of-fold.',
+        'Article de recherche et plateforme open-source comparant trois mécanismes d\'attention pour la segmentation des sous-régions hippocampiques sur 260 volumes IRM. Propose un protocole d\'évaluation apparié montrant que les scores de sélection peuvent induire en erreur.',
       image: undefined,
-      tags: ['CNN 3D', 'PyTorch', 'MONAI', 'Open Source'],
+      tags: ['U-Net 3D', 'PyTorch', 'MONAI', 'Attention Coordonnée', 'CISA', 'Open Source'],
       year: '2026',
       caseStudy: {
         problem:
-          'L\'hippocampe est l\'une des premières structures cérébrales à rétrécir dans la maladie d\'Alzheimer et l\'épilepsie. Mesurer ses sous-régions sur IRM à la main est lent et incohérent entre experts, ce qui retarde le diagnostic précoce.',
+          'Les sous-régions hippocampiques soutiennent le diagnostic dans l\'épilepsie, la déficience cognitive légère et la maladie d\'Alzheimer. Les mécanismes d\'attention sont largement utilisés mais les comparaisons varient généralement les partitions de données, le prétraitement et les métriques, rendant les résultats non fiables.',
         approach:
-          'GrayMatter est une plateforme open-source (MONAI, PyTorch) pour la segmentation reproductible des sous-régions hippocampiques. Chaque modèle est évalué deux fois : une fois par validation croisée et une fois out-of-fold sur des données exclues de l\'entraînement.',
+          'Protocole d\'évaluation apparié qui fixe toutes les variables de confusion et compare trois conceptions de connexions résiduelles : U-Net 3D simple, attention coordonnée et attention inter-tranche coordonnée (CISA). Tous entraînés sur des partitions patient identiques et évalués sur des prédictions croisées agrégées using cinq métriques complémentaires (DSC, HD95, ASD, IoU, RVE) avec tests statistiques appariés.',
         highlight:
-          'Les chiffres honnêtes sont le point. La validation croisée et l\'évaluation out-of-fold donnent des classements différents, montrant qu\'un petit écart peut changer la méthode gagnante. GrayMatter est open source pour que chacun puisse revérifier les résultats.',
+          'La CISA obtient le meilleur score de sélection mais ne conserve pas cet avantage sous évaluation agrégée ; l\'attention coordonnée se classe plus consistent sur les cinq métriques. Cela montre que les scores de sélection seuls peuvent induire en erreur, et que l\'évaluation multi-métrique agrégée est plus fiable.',
       },
     },
   ],

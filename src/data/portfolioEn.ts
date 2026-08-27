@@ -114,21 +114,21 @@ export const portfolioEn = {
     },
     {
       id: 'greymatter',
-      title: 'GreyMatter | Open-Source Hippocampus Segmentation',
-      status: 'Complete',
+      title: 'GreyMatter | Attention Mechanisms for Hippocampal Segmentation',
+      status: 'Published (MELBA)',
       category: 'AI / Medical Imaging',
       description:
-        '1st prize, I-ACE Hackathon 2026. Open-source platform for reproducible hippocampal subregion segmentation on MRI (260 cases). Highlights the gap between cross-validation and out-of-fold evaluation.',
+        'Research paper and open-source platform comparing three attention mechanisms for hippocampal subregion segmentation on 260 MRI volumes. Introduces a matched evaluation protocol showing selection-time scores can mislead architectural comparisons.',
       image: undefined,
-      tags: ['3D CNN', 'PyTorch', 'MONAI', 'Open Source'],
+      tags: ['3D U-Net', 'PyTorch', 'MONAI', 'Coordinate Attention', 'CISA', 'Open Source'],
       year: '2026',
       caseStudy: {
         problem:
-          'The hippocampus is one of the first brain structures to shrink in Alzheimer\'s disease and epilepsy. Measuring its subregions on MRI by hand is slow and inconsistent between experts, which delays early diagnosis.',
+          'Hippocampal subregions support diagnosis in epilepsy, mild cognitive impairment, and Alzheimer\'s disease. Attention mechanisms are widely used but comparisons typically vary data splits, preprocessing, and metrics, making results unreliable.',
         approach:
-          'GrayMatter is an open-source platform (MONAI, PyTorch) for reproducible hippocampal subregion segmentation. Every model is evaluated twice: once with cross-validation and once out of fold on data excluded from training.',
+          'Introduced a matched evaluation protocol that fixes all confounding variables and compares three skip-connection designs: plain 3D U-Net, coordinate attention, and coordinate inter-slice attention (CISA). All trained on identical patient-level splits and scored on pooled cross-validated predictions using five complementary metrics (DSC, HD95, ASD, IoU, RVE) with paired statistical testing.',
         highlight:
-          'The honest numbers are the point. Cross-validation and out-of-fold evaluation gave different rankings, showing that a small gap can change which method wins. GrayMatter ships open source so anyone can re-run the evaluation and trust the result.',
+          'CISA achieves the best selection-time validation score but does not retain this advantage under pooled evaluation; coordinate attention ranks more consistently across all five metrics. This shows selection-time scores alone can mislead, and pooled multi-metric evaluation gives a more trustworthy picture.',
       },
     },
   ],
