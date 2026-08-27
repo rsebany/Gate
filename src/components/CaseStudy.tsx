@@ -91,14 +91,6 @@ export function CaseStudy({
         </section>
 
         <section className="mt-10 flex flex-col items-center gap-4 border-t border-dotted border-ink/50 pt-8">
-          <a
-            href={project.paper}
-            target="_blank"
-            rel="noreferrer"
-            className="border-2 border-ink px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-ink transition hover:bg-ink/10"
-          >
-            {labels.readPaper}
-          </a>
           <button
             type="button"
             onClick={onBack}

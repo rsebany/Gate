@@ -1,6 +1,4 @@
 import ildXrImg from '../assets/ILD-XR.png'
-import pfePaper from '../assets/Paper/PFE_research.pdf'
-import graymatterPaper from '../assets/Paper/Graymatter_paper.pdf'
 
 export const portfolioEn = {
   lang: 'en' as 'en' | 'fr',
@@ -104,7 +102,6 @@ export const portfolioEn = {
         'DICOM',
         'CT Analysis',
       ],
-      paper: pfePaper,
       year: '2026',
       caseStudy: {
         problem:
@@ -124,7 +121,6 @@ export const portfolioEn = {
         '1st prize, I-ACE Hackathon 2026. Open-source platform for reproducible hippocampal subregion segmentation on MRI (260 cases). Highlights the gap between cross-validation and out-of-fold evaluation.',
       image: undefined,
       tags: ['3D CNN', 'PyTorch', 'MONAI', 'Open Source'],
-      paper: graymatterPaper,
       year: '2026',
       caseStudy: {
         problem:
@@ -293,7 +289,6 @@ export const portfolioEn = {
     theApproach: 'The approach',
     whyItHolds: 'Why it holds up',
     builtWith: 'Built with',
-    readPaper: 'Read the research paper (PDF)',
     allRightsReserved: 'All rights reserved.',
   },
 }

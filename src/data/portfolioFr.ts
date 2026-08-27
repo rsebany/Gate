@@ -1,6 +1,4 @@
 import ildXrImg from '../assets/ILD-XR.png'
-import pfePaper from '../assets/Paper/PFE_research.pdf'
-import graymatterPaper from '../assets/Paper/Graymatter_paper.pdf'
 
 export const portfolioFr = {
   lang: 'fr' as const,
@@ -104,7 +102,6 @@ export const portfolioFr = {
         'DICOM',
         'Analyse CT',
       ],
-      paper: pfePaper,
       year: '2026',
       caseStudy: {
         problem:
@@ -124,7 +121,6 @@ export const portfolioFr = {
         '1er prix, Hackathon I-ACE 2026. Plateforme open-source pour la segmentation reproductible des sous-régions hippocampiques sur IRM (260 cas). Met en lumière l\'écart entre la validation croisée et l\'évaluation out-of-fold.',
       image: undefined,
       tags: ['CNN 3D', 'PyTorch', 'MONAI', 'Open Source'],
-      paper: graymatterPaper,
       year: '2026',
       caseStudy: {
         problem:
@@ -291,9 +287,8 @@ export const portfolioFr = {
     backToPortfolio: 'Retour au portfolio',
     theProblem: 'Le problème',
     theApproach: 'L\'approche',
-    whyItHolds: 'Pourquoi ça tient debout',
-    builtWith: 'Technologies utilisées',
-    readPaper: 'Lire l\'article de recherche (PDF)',
+    whyItHolds: 'Pourquoi c\'est solide',
+    builtWith: 'Développé avec',
     allRightsReserved: 'Tous droits réservés.',
   },
 }

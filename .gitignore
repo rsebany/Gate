@@ -16,6 +16,7 @@ dist-ssr
 src/assets/Paper/
 assets/Paper/
 **/Paper/**/*.pdf
+*.pdf
 
 # Editor directories and files
 .vscode/*
