@@ -1,22 +1,21 @@
-import { motion } from 'framer-motion'
-import { portfolio } from '../data/portfolio'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { usePortfolio } from '../hooks/usePortfolio'
 
 export function Sidebar() {
-  const reduced = usePrefersReducedMotion()
-  const { skillsIndex, education, skillsGroups, certifications, interests, connect } =
-    portfolio
+  const {
+    skillsIndex,
+    education,
+    skillsGroups,
+    certifications,
+    interests,
+    connect,
+    labels,
+  } = usePortfolio()
 
   return (
     <aside className="space-y-8 border-t border-ink pt-8 lg:border-t-0 lg:pt-0">
-      <motion.section
-        initial={reduced ? false : { opacity: 0, x: 16 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: reduced ? 0 : 0.45 }}
-      >
+      <section>
         <h2 className="border-b border-ink pb-2 font-display text-lg font-bold text-ink">
-          Skills index
+          {labels.skillsIndexTitle}
         </h2>
         <ul className="mt-4 space-y-2 font-sans text-sm">
           {skillsIndex.map((s) => (
@@ -32,16 +31,11 @@ export function Sidebar() {
             </li>
           ))}
         </ul>
-      </motion.section>
+      </section>
 
-      <motion.section
-        initial={reduced ? false : { opacity: 0, x: 16 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : 0.05 }}
-      >
+      <section>
         <h2 className="border-b border-ink pb-2 font-display text-lg font-bold text-ink">
-          Academic notices
+          {labels.academicNotices}
         </h2>
         <ul className="mt-4 space-y-6">
           {education.map((e) => (
@@ -56,16 +50,11 @@ export function Sidebar() {
             </li>
           ))}
         </ul>
-      </motion.section>
+      </section>
 
-      <motion.section
-        initial={reduced ? false : { opacity: 0, x: 16 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : 0.08 }}
-      >
+      <section>
         <h2 className="border-b border-ink pb-2 font-display text-lg font-bold text-ink">
-          Credentials
+          {labels.credentials}
         </h2>
         <ul className="mt-4 space-y-4">
           {certifications.map((c) => (
@@ -75,15 +64,10 @@ export function Sidebar() {
             </li>
           ))}
         </ul>
-      </motion.section>
+      </section>
 
-      <motion.section
-        initial={reduced ? false : { opacity: 0, x: 16 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : 0.1 }}
-      >
-        <h2 className="font-display text-lg font-bold text-ink">Stack & languages</h2>
+      <section>
+        <h2 className="font-display text-lg font-bold text-ink">{labels.stackLanguages}</h2>
         <div className="mt-3 space-y-4">
           {skillsGroups.map((g) => (
             <div key={g.title}>
@@ -103,15 +87,10 @@ export function Sidebar() {
             </div>
           ))}
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section
-        initial={reduced ? false : { opacity: 0, x: 16 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : 0.11 }}
-      >
-        <h2 className="font-display text-lg font-bold text-ink">Interests</h2>
+      <section>
+        <h2 className="font-display text-lg font-bold text-ink">{labels.interestsTitle}</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {interests.map((item) => (
             <span
@@ -122,17 +101,13 @@ export function Sidebar() {
             </span>
           ))}
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section
+      <section
         id="connect"
         className="border-2 border-ink p-4"
-        initial={reduced ? false : { opacity: 0, x: 16 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : 0.12 }}
       >
-        <h2 className="font-display text-xl font-bold text-ink">Connect now</h2>
+        <h2 className="font-display text-xl font-bold text-ink">{labels.connectNow}</h2>
         <p className="mt-2 font-body text-sm italic text-ink/80">{connect.tagline}</p>
         <div className="mt-4 flex flex-col gap-2 font-sans text-xs uppercase tracking-widest">
           <a
@@ -156,7 +131,7 @@ export function Sidebar() {
             {connect.githubLabel}
           </a>
         </div>
-      </motion.section>
+      </section>
     </aside>
   )
 }

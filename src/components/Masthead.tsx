@@ -1,10 +1,9 @@
-import { motion } from 'framer-motion'
-import { portfolio } from '../data/portfolio'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { IconEmail, IconGitHub, IconPhone } from './icons'
+import { useLanguage } from '../context/LanguageContext'
+import { usePortfolio } from '../hooks/usePortfolio'
+import { IconEmail, IconGitHub, IconLinkedIn, IconPhone } from './icons'
 
-function formatToday(): string {
-  return new Intl.DateTimeFormat('en-US', {
+function formatToday(lang: string): string {
+  return new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -16,6 +15,7 @@ const iconMap = {
   email: IconEmail,
   github: IconGitHub,
   phone: IconPhone,
+  linkedin: IconLinkedIn,
 } as const
 
 function isExternalLink(href: string): boolean {
@@ -23,8 +23,8 @@ function isExternalLink(href: string): boolean {
 }
 
 export function Masthead() {
-  const reduced = usePrefersReducedMotion()
-  const { masthead, socials } = portfolio
+  const { masthead, socials } = usePortfolio()
+  const { lang, setLang } = useLanguage()
 
   return (
     <header className="border-b border-ink">
@@ -33,7 +33,14 @@ export function Masthead() {
           {masthead.volume} · {masthead.city}
         </span>
         <div className="flex flex-wrap items-center gap-3">
-          <time dateTime={new Date().toISOString()}>{formatToday()}</time>
+          <time dateTime={new Date().toISOString()}>{formatToday(lang)}</time>
+          <button
+            type="button"
+            onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
+            className="border border-ink bg-ink/10 px-3 py-1 font-sans text-[11px] uppercase tracking-widest text-ink transition hover:bg-ink/20"
+          >
+            {lang === 'en' ? 'FR' : 'EN'}
+          </button>
           <a
             href="#connect"
             className="border border-ink bg-ink/10 px-3 py-1 text-ink transition hover:bg-ink/20"
@@ -65,23 +72,11 @@ export function Masthead() {
         })}
       </nav>
 
-      <motion.div
-        className="px-2 py-8 text-center"
-        initial={reduced ? false : { opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduced ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <div className="px-2 py-8 text-center">
         <h1 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-7xl">
           {masthead.nameDisplay}
         </h1>
-        <div className="mt-4 flex items-center justify-center gap-4">
-          <span className="h-px w-12 bg-ink md:w-24" aria-hidden />
-          <p className="font-display text-sm font-semibold tracking-[0.2em] text-ink md:text-base">
-            {masthead.subtitle}
-          </p>
-          <span className="h-px w-12 bg-ink md:w-24" aria-hidden />
-        </div>
-      </motion.div>
+      </div>
     </header>
   )
 }

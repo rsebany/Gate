@@ -1,25 +1,16 @@
-import { motion } from 'framer-motion'
-import { portfolio } from '../data/portfolio'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { usePortfolio } from '../hooks/usePortfolio'
 
 export function VideoShowcase() {
-  const reduced = usePrefersReducedMotion()
-  const { video } = portfolio
+  const { video, labels } = usePortfolio()
 
   return (
-    <motion.section
-      className="border-b border-ink py-8"
-      initial={reduced ? false : { opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: reduced ? 0 : 0.5 }}
-    >
+    <section className="border-b border-ink py-8">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-2 border-b-2 border-ink pb-2">
         <h2 className="font-display text-2xl font-bold tracking-tight text-ink">
-          VIDEO EXHIBIT
+          {labels.videoExhibit}
         </h2>
         <span className="font-sans text-xs uppercase tracking-widest text-ink/60">
-          Zirah · CS50x Project
+          Zirah · CS50x
         </span>
       </div>
 
@@ -40,6 +31,6 @@ export function VideoShowcase() {
       <p className="mt-4 font-body text-sm leading-relaxed text-ink/85">
         {video.description}
       </p>
-    </motion.section>
+    </section>
   )
 }

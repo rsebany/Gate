@@ -1,55 +1,27 @@
-import { motion } from 'framer-motion'
-import { portfolio } from '../data/portfolio'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { usePortfolio } from '../hooks/usePortfolio'
 
 export function FeaturedProjects({
   onOpenCaseStudy,
 }: {
   onOpenCaseStudy: (id: string) => void
 }) {
-  const reduced = usePrefersReducedMotion()
+  const { projects, labels } = usePortfolio()
 
   return (
-    <motion.section
-      className="pt-8"
-      initial={reduced ? false : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: reduced ? 0 : 0.55 }}
-    >
-      <motion.div
-        className="overflow-hidden border-2 border-ink bg-ink/10 text-ink"
-        initial={{
-          clipPath: reduced
-            ? 'inset(0 0% 0 0)'
-            : 'inset(0 100% 0 0)',
-        }}
-        whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
-        viewport={{ once: true }}
-        transition={{
-          duration: reduced ? 0 : 0.65,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-      >
+    <section className="pt-8">
+      <div className="overflow-hidden border-2 border-ink bg-ink/10 text-ink">
         <h2 className="px-4 py-2 font-display text-lg font-bold tracking-[0.15em] md:text-xl">
-          FEATURED PROJECTS
+          {labels.featuredProjects}
         </h2>
-      </motion.div>
+      </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
-        {portfolio.projects.map((p, i) => (
-          <motion.article
+        {projects.map((p) => (
+          <article
             key={p.id}
             className="group flex flex-col border border-ink bg-paper p-4 shadow-[4px_4px_0_0_rgba(10,10,10,0.08)]"
-            initial={reduced ? false : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              delay: reduced ? 0 : i * 0.08,
-              duration: reduced ? 0 : 0.45,
-            }}
           >
-            <div className="mb-3 aspect-video w-full overflow-hidden border border-ink/30 bg-gradient-to-br from-ink/10 to-ink/5 grayscale transition duration-300 group-hover:grayscale-0">
+            <div className="mb-3 aspect-video w-full overflow-hidden border border-ink/30 bg-gradient-to-br from-ink/10 to-ink/5">
               {p.image ? (
                 <img
                   src={p.image}
@@ -94,11 +66,11 @@ export function FeaturedProjects({
               onClick={() => onOpenCaseStudy(p.id)}
               className="mt-4 inline-block border-2 border-ink px-4 py-2 text-center font-sans text-xs font-semibold uppercase tracking-widest text-ink transition hover:bg-ink/10"
             >
-              Case study
+              {labels.caseStudy}
             </button>
-          </motion.article>
+          </article>
         ))}
       </div>
-    </motion.section>
+    </section>
   )
 }

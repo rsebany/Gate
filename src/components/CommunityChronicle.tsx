@@ -1,29 +1,21 @@
-import { motion } from 'framer-motion'
-import { portfolio } from '../data/portfolio'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { usePortfolio } from '../hooks/usePortfolio'
 
 export function CommunityChronicle() {
-  const reduced = usePrefersReducedMotion()
+  const { community, labels } = usePortfolio()
 
   return (
-    <motion.section
-      className="border-b border-ink py-8"
-      initial={reduced ? false : { opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: reduced ? 0 : 0.5 }}
-    >
+    <section className="border-b border-ink py-8">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-2 border-b-2 border-ink pb-2">
         <h2 className="font-display text-2xl font-bold tracking-tight text-ink">
-          COMMUNITY CHRONICLE
+          {labels.communityChronicle}
         </h2>
         <span className="font-sans text-xs uppercase tracking-widest text-ink/60">
-          Extracurricular
+          {labels.extracurricular}
         </span>
       </div>
 
       <ul className="space-y-0">
-        {portfolio.community.map((entry, index) => (
+        {community.map((entry, index) => (
           <li key={entry.id}>
             {index > 0 && (
               <div
@@ -50,6 +42,6 @@ export function CommunityChronicle() {
           </li>
         ))}
       </ul>
-    </motion.section>
+    </section>
   )
 }

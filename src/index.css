@@ -27,7 +27,6 @@
   }
 }
 
-/* Newspaper drop cap */
 .drop-cap::first-letter {
   float: left;
   margin-right: 0.4rem;
@@ -35,66 +34,4 @@
   font-size: 3.25rem;
   line-height: 0.85;
   font-weight: 700;
-}
-
-/* CT scanner sweep (decorative) */
-@keyframes scanner-sweep {
-  0% {
-    top: -25%;
-  }
-  100% {
-    top: 110%;
-  }
-}
-
-.animate-scanner-sweep {
-  animation: scanner-sweep 14s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-scanner-sweep {
-    animation: none;
-  }
-}
-
-/* Film grain drift (decorative) */
-@keyframes grain-drift {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-2%, 2%);
-  }
-}
-
-.motion-safe\:animate-grain {
-  animation: grain-drift 8s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .motion-safe\:animate-grain {
-    animation: none;
-  }
-}
-
-/* Very subtle contrast pulse on figure (optional) */
-@keyframes subtle-flicker {
-  0%,
-  100% {
-    filter: contrast(1.15);
-  }
-  50% {
-    filter: contrast(1.22);
-  }
-}
-
-.motion-safe\:animate-subtle-flicker {
-  animation: subtle-flicker 6s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .motion-safe\:animate-subtle-flicker {
-    animation: none;
-  }
 }

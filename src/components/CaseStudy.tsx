@@ -1,10 +1,6 @@
-import { motion } from 'framer-motion'
-import { portfolio } from '../data/portfolio'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { PaperGrain } from './PaperGrain'
-import { ScannerSweep } from './ScannerSweep'
+import { usePortfolio } from '../hooks/usePortfolio'
 
-type Project = (typeof portfolio.projects)[number]
+type Project = ReturnType<typeof usePortfolio>['projects'][number]
 
 export function CaseStudy({
   project,
@@ -13,25 +9,18 @@ export function CaseStudy({
   project: Project
   onBack: () => void
 }) {
-  const reduced = usePrefersReducedMotion()
+  const { labels } = usePortfolio()
 
   return (
-    <div className="group relative min-h-svh bg-paper">
-      <PaperGrain />
-      <ScannerSweep />
-      <div className="group relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-0 md:px-6">
-        <motion.header
-          className="border-b-2 border-ink pb-8 pt-6"
-          initial={reduced ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduced ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
-        >
+    <div className="min-h-svh bg-paper">
+      <div className="mx-auto max-w-4xl px-4 pb-16 pt-0 md:px-6">
+        <header className="border-b-2 border-ink pb-8 pt-6">
           <button
             type="button"
             onClick={onBack}
             className="border border-ink bg-ink/10 px-3 py-1 font-sans text-xs uppercase tracking-widest text-ink transition hover:bg-ink/20"
           >
-            &larr; Back to portfolio
+            &larr; {labels.backToPortfolio}
           </button>
 
           <div className="mt-8 text-center">
@@ -45,7 +34,7 @@ export function CaseStudy({
               {project.description}
             </p>
           </div>
-        </motion.header>
+        </header>
 
         {project.image && (
           <div className="mt-8 overflow-hidden border-2 border-ink">
@@ -60,7 +49,7 @@ export function CaseStudy({
         <section className="mt-10 grid gap-8 md:grid-cols-2">
           <div>
             <h2 className="border-b border-ink pb-2 font-display text-xl font-bold text-ink">
-              The problem
+              {labels.theProblem}
             </h2>
             <p className="mt-3 font-body text-sm leading-relaxed text-ink/90">
               {project.caseStudy.problem}
@@ -68,7 +57,7 @@ export function CaseStudy({
           </div>
           <div>
             <h2 className="border-b border-ink pb-2 font-display text-xl font-bold text-ink">
-              The approach
+              {labels.theApproach}
             </h2>
             <p className="mt-3 font-body text-sm leading-relaxed text-ink/90">
               {project.caseStudy.approach}
@@ -78,7 +67,7 @@ export function CaseStudy({
 
         <section className="mt-10 border-2 border-ink bg-ink/10 p-6 text-ink">
           <h2 className="font-display text-lg font-bold uppercase tracking-[0.15em]">
-            Why it holds up
+            {labels.whyItHolds}
           </h2>
           <p className="mt-3 font-body text-sm leading-relaxed text-ink/90">
             {project.caseStudy.highlight}
@@ -87,7 +76,7 @@ export function CaseStudy({
 
         <section className="mt-10">
           <h2 className="border-b border-ink pb-2 font-display text-xl font-bold text-ink">
-            Built with
+            {labels.builtWith}
           </h2>
           <div className="mt-4 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
@@ -108,14 +97,14 @@ export function CaseStudy({
             rel="noreferrer"
             className="border-2 border-ink px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-ink transition hover:bg-ink/10"
           >
-            Read the research paper (PDF)
+            {labels.readPaper}
           </a>
           <button
             type="button"
             onClick={onBack}
             className="font-sans text-xs uppercase tracking-widest text-ink/70 underline underline-offset-4 transition hover:text-ink"
           >
-            &larr; Back to portfolio
+            &larr; {labels.backToPortfolio}
           </button>
         </section>
       </div>
