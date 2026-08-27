@@ -115,7 +115,7 @@ export const portfolioFr = {
     {
       id: 'greymatter',
       title: 'GreyMatter | Mécanismes d\'Attention pour la Segmentation de l\'Hippocampe',
-      status: 'Publié (MELBA)',
+      status: 'Terminé',
       category: 'IA / Imagerie Médicale',
       description:
         'Article de recherche et plateforme open-source comparant trois mécanismes d\'attention pour la segmentation des sous-régions hippocampiques sur 260 volumes IRM. Propose un protocole d\'évaluation apparié montrant que les scores de sélection peuvent induire en erreur.',

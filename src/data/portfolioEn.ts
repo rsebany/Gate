@@ -115,7 +115,7 @@ export const portfolioEn = {
     {
       id: 'greymatter',
       title: 'GreyMatter | Attention Mechanisms for Hippocampal Segmentation',
-      status: 'Published (MELBA)',
+      status: 'Complete',
       category: 'AI / Medical Imaging',
       description:
         'Research paper and open-source platform comparing three attention mechanisms for hippocampal subregion segmentation on 260 MRI volumes. Introduces a matched evaluation protocol showing selection-time scores can mislead architectural comparisons.',
