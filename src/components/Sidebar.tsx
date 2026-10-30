@@ -7,6 +7,7 @@ export function Sidebar() {
     skillsGroups,
     certifications,
     interests,
+    references,
     connect,
     labels,
   } = usePortfolio()
@@ -39,7 +40,7 @@ export function Sidebar() {
         </h2>
         <ul className="mt-4 space-y-6">
           {education.map((e) => (
-            <li key={e.institution}>
+            <li key={`${e.institution}-${e.date}`}>
               <p className="font-display text-base font-bold text-ink">
                 {e.institution}
               </p>
@@ -101,6 +102,29 @@ export function Sidebar() {
             </span>
           ))}
         </div>
+      </section>
+
+      <section>
+        <h2 className="border-b border-ink pb-2 font-display text-lg font-bold text-ink">
+          {labels.referencesTitle}
+        </h2>
+        <ul className="mt-4 space-y-5">
+          {references.map((r) => (
+            <li key={r.name}>
+              <p className="font-display text-sm font-bold text-ink">{r.name}</p>
+              <p className="font-sans text-xs text-ink/60">
+                {r.role} · {r.org}
+              </p>
+              <a
+                href={`mailto:${r.email}`}
+                className="mt-1 inline-block break-all font-sans text-xs text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink"
+              >
+                {r.email}
+              </a>
+              <p className="mt-1 font-sans text-[11px] text-ink/60">{r.relation}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section
